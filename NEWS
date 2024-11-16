@@ -1,0 +1,324 @@
+v0.9.12, November 04, 2019
+Performance and stability update for v0.9.11
+
+* Fixed stat computation on 3channel FITS
+* Fixed free memory computation on Windows
+* Fixed a bug in RGB compositing mode allowing now users to use multichannel image tools
+* Fixed crash after deconvolution of monochrome images
+* Fixed a bug in astrometry when downloaded catalog was too big
+* New split cfa feature
+* Script status (line currenty executed) is displayed in a statusbar
+* TIFF export is now available for sequences
+* Better dialog windows management
+* Histogram tool refactoring
+* Provide new strategies for free memory management
+* Provide new photometric catalog for color calibration (APASS)
+* Added new filter: Contrast Limited Adaptive Histogram Equalization
+* Open sequence by double clicking on seq file
+
+v0.9.11, May 27, 2019
+Performance, feature and stability update for v0.9.10
+
+* New icon set
+* New photometric color calibration tool
+* New background extraction tool working with 64-bit precision and dither
+* Improved processing speed by optimizing sorting algorithms to each use
+* Parallelizing preprocessing
+* New image filtering for sequence processing: possible from the command line and with multiple filters
+* Improved free disk space feedback and checks before running preprocess, global registration and up-scaling at stacking
+* New GTK+ theme settings: it can now be set from siril to dark or light, or kept to automatic detection
+* New normalization to 16 bits for RAW images with less dynamic range (in general 12 or 14).
+* Improved mouse selection by making it more dynamic
+* Added drag and drop capability in the conversion treeview
+* Added output file name argument to stacking commands
+* New command setmem to limit used memory from scripts
+* New clear and save buttons for the log in GUI
+* Taking into account the Bayer matrix offset keywords from FITS headers
+* Displaying script line when error occurs
+* Allow registration on CFA SER sequences
+* Processing monochrome images requires less memory, or can be more paralellized if memory was the limiting factor
+* Fixed dark optimization
+* Fixed crash in global registration on a sequence that contained a dark image
+* Fixed management of the statistics of images on which they fail to be computed
+* Fixed free disk space detection and usual processing commands on 32-bit systems
+* Fixed free memory detection for stacking in case of up-scaling ('drizzle') and memory distribution to threads
+* Fixed bug in FFT module
+* Fixed bug in the drawn circle of photometry
+* Fixed build fail with OpenCV 4.0.1
+* Fixed SER sequence cropping
+* Fixed regression in global registration for images having different size
+* Added German translation
+
+v0.9.10, Jan 16, 2019
+Stability update for v0.9.9
+
+* New astrometry tool that solves acquisition parameters from stars in the image (requires Web access and libcurl)
+* New comet registration method
+* Enabled previews for color saturation, asinh stretching, histogram transform and wavelets
+* Added ability to join SER files
+* Added a command stream using named pipes
+* Added RGB flat normalisation for CFA images and command GREY_FLAT
+* Added SETFINDSTAR command to define sigma and roundness parameters
+* Added ASINH command and GUI function, for asinh stretching of images
+* Added RGRADIENT command and GUI function
+* Added negative transformation
+* Made command SEQCROP scriptable
+* Improved ECC alignment algorithm
+* Improved global registration and fixed a bug
+* Redesigned all dialog windows to conform to GNOME guidelines
+* Preserving history in FITS file header when former history exists
+* Preserving FITS keywords in sum stacked image
+* Checking and increasing if needed maximum number of FITS that can be stacked on the system
+* Automatically detecting GTK+ dark theme preference
+* Adding a setting to activate image window positioning from the last session
+* Fixed a bug in photometry where stars were too round
+* Fixed an issue with wide chars on Windows
+* Fixed some erratic behaviour when reference image was outside selection
+* Fixed default rotation interpolation algorithm for register command
+* Fixed a crash on sequence export with normalization
+* Fixed line endings in scripts for all OS
+* Fixed compilation for OpenCV 4.0
+* Fixed dark optimization and added -opt option in PREPROCESS command
+* Fixed a crash in global registration with unselected images
+
+v0.9.9, Jun 07, 2018
+Stability update for v0.9.8
+
+* Major update of the command line, with completion and documentation in the GUI, enhanced scripting capability by running commands from a file and also allowing it to be run with no X11 server running with the -s command line option
+* Added commands to stack and register a sequence
+* Image statistics, including auto-stretch parameters and stacking normalization, are now cached in the seq file for better performance
+* Global star registration now runs in parallel
+* Workflow improvement by adding demosaicing as last part of the preprocessing
+* Added a filtering method for stacking based on star roundness
+* Added an option to normalize stacked images to 16-bit with average rejection algorithm
+* All GUI save functions are now done in another thread
+* Improved histogram transformation GUI
+* Improved support of various FITS pixel formats
+* Preserve known FITS keywords in the stacked image by average method
+* Added native open and save dialogues for Windows users
+* Various Windows bug fixes in SER handling
+* Fixed wrong handling of scale variations in Drizzle case
+* Fixed 8-bit images auto-stretch display
+* Fixed BMP support
+* Fixed issues in PNG and TIFF 8-bit export
+* Fixed the "About" OS X menu
+
+v0.9.8.3, Feb 19, 2018
+Patch update for v0.9.8
+
+* Check for new available version
+* Handle XTRANS FUJIFILM RAWs
+* Fixed Preprocessing SER files that gave corrupted SER results
+* Fixed SaveBMP that added tif extension
+* Fixed Registration on all images that was done on selected images instead
+* Fixed Target directory that was ignored when saving as image
+* Fixed crash with Wrong SER timestamp 
+
+v0.9.8, Jan 31, 2018
+Stability update for v0.9.7
+
+* Added SavePNG
+* Allow to use gnuplot on Windows if it is installed on the default path
+* Improve SER processing speed
+* Opencv is now mandatory
+* Implementation of a simplified Drizzle
+* New tool for Lucy-Richardson deconvolution
+* Conversion list tree is now sorted on first load. Sort is natural.
+* Command stackall is available, with optional arguments, for all stacking methods
+* Change default working directory to special directory 'Pictures' if it exists
+* Reduce display time of autostretch
+* Parallelize sum stacking
+* Use thread-safe progress bar update instead of deprecated one. Run 'Check sequences' in a background task
+* Add an option to set the generic image_hook behaviour when function fails
+* Switch on "Images previously manually selected from the sequence" if user checks and unchecks frames
+* Fixed numerous bug on Windows with wide char filenames
+* Fixed dark theme icons
+* Fixed exposure dates of exported SER sequences that were wrong with filtering
+* Fixed the loss of color calibration on background extraction
+* Fixed menu update after RGB composition
+* Fixed bug in "Average" and "Median" stack for huge SER file
+* Fixed when it was impossible to use multithread functions after star alignment in compositing tool
+* Fixed crash when selecting "Best images .. (PSF)" if the loaded sequence has no PSF data
+* Fixed sorted images by FWHM
+* Fixed crash on stacking when no reference image is selected and first image of the sequence is excluded
+
+v0.9.7, Sep 21, 2017
+Stability update for v0.9.6
+
+* Fixed French translation
+* Fixed bug in registration from compositing for layers alignment
+* Fixed crash when stacking failed
+* Fixed limit of 4Go SER file for non POSIX Standard
+* Improved global registration. New algorithm with homography
+
+v0.9.6, Jun 20, 2017
+Stability update for v0.9.5
+
+* Allow sequence export to use stacking image filtering
+* Get the working directory as an optional command line argument
+* Improve photometry
+* Fixed wrong selected image in list panel when list was sorted
+* Fixed registration with unselected images which made progress bar exceed 100%
+* Fixed again compilation that failed on KFreeBSD
+* Fixed name of Red Layer using compositing tool that was wrong
+
+v0.9.5, Nov 28, 2016
+Stability update for v0.9.4
+ * Implement a graph interface to display quality registration information
+ * No X and Y binning value could lead to errors with fwhm
+ * Take reference image as normalisation reference
+ * Retrieve Bayer pattern from RAW file
+ * Export sequence to MP4
+ * Statistics should not take into account black point
+ * Add ComboBox for registration interpolation
+ * Fixed interpolation in global star registration that gave blurred results
+ * Fixed FreeBSD intltool compilation fails
+ * Fixed erroneous created sequence in registration with unselected images
+ * Fixed compilation that failed on KFreeBSD
+
+v0.9.4, Aug 17, 2016
+Stability update for v0.9.3
+ * Fixed issues with SER in generic processing function
+ * Fixed inability to open FITS when filename had parenthesis
+ * Fixed selecting new images did not update the number of selected images
+ * Fixed histogram sliders lag on OS-X
+ * Fixed message "Error in highest quality accepted for sequence processing....." during stack of %, even if quality data are computed
+ * Fixed sequence export to SER with unselected images
+ * Fixed global star alignment with angle close to 180deg
+ * Fixed undo cosmetic correction
+ * Fixed crash in peaker function
+ * Fixed aborting global star registration summary
+ * Fixed sequence list which was unreadable with dark GTK theme
+ * Fixed the update of the list of images
+ * Added support of internationalization: French, Dutch, Chinese, Italian, Arabic
+ * Option for logarithm scale in histogram transformation
+ * Add siril.desktop in archlinux
+ * Added support for exporting sequence in avi format
+ * Option to make a selection for global star registration in a smaller region
+ * Read commands from a file
+ * Option to follow star in registration
+ * Added support for resizing exported sequence
+ * Added support for reading and writing SER timestamps
+ * Added support for RGB alignment
+ * Added functionality to fix broken (0 framecount) SER files.
+
+v0.9.3, Apr 12, 2016
+Stability update for v0.9.2.
+ * Fixed bug in preprocessing
+ * Fixed compilation error in come conditions 
+ * Fixed uninitialized values
+ * Fixed typos
+
+v0.9.2, Apr 04, 2016
+Stability update for v0.9.1.
+ * Added support for dark optimization
+ * Added hot pixel removal feature
+ * Added Animated GIF output and registered sequence export
+ * Added autostretch viewer mode
+ * Allowing a reference magnitude to be set to get absolute magnitude instead of relative
+ * New commands: sequence selection range and stackall
+ * Added vertical banding noise removal tool
+ * Providing a better planetary registration algorithm
+ * Parallelized registration
+ * Refactored conversion to include AVI to SER
+ * Configurable "Are you sure" dialogues
+ * ls command gives results in an ordered way
+ * Updated to FFMS2 latest version
+ * Clarified the use of demoisaicing
+ * Improved star detection
+ * Improved RGB compositing tool
+ * Allowing manual selection of background samples
+ * Fixed force recomputing statistics for stacking
+ * Fixed noise estimation
+ * Fixed entropy computation
+
+v0.9.1, Nov 30, 2015.
+Stability update for v0.9.0.
+ * added support for GSL 2.
+ * fixed crash on startup without existing config file
+
+v0.9.0, Oct 16, 2015.
+First stable version. High quality processing for deep-sky images is fully
+functional, a basic processing is available for planetary images.
+A list of solved issues and new features since the introduction of the bug
+tracking system at mid-course can be seen here:
+http://free-astro.org/bugs/roadmap_page.php?version_id=1
+The main features introduced since the previous version are:
+ * new global star registration, taking into account field rotation
+ * new quality evaluation method for planetary images, used to sort the best
+ * images selected for stacking
+ * new parallelized stacking algorithm for all sequences, including all SER
+   formats, allowing maximum used memory to be set
+ * threading of the most time consuming processings, to keep the GUI reactive,
+   as well as many other speed improvements
+ * tested and improved on FreeBSD and MacOS X systems, and ARM architectures
+ * undo/redo on processing operations
+ * sequence cropping tool
+
+v0.9.0-rc1, Dec 29, 2014.
+ * many fixes including background extraction, compositing alignment, rejection
+   algorithms, wavelets
+ * threading of the heavy computations, to avoid graphical user interface freezing
+   and provide a nice way of seeing what is happening in the console window
+ * image rotation with any angle (not in registration yet)
+ * Canon banding removing tool
+ * GTK+ minimal version is now 3.6
+
+v0.9.0-beta (new version), Nov 11, 2014: major refactoring. See more details at
+http://free-astro.org/index.php/Siril:0.9.0_beta
+ * new development team and website
+ * many new image formats supported for import (converted to Siril's FITS: 8-bit
+   and 16-bit BMP, TIFF, JPEG, PNG, NetPBM binary images, PIC (IRIS), RAW DSLR
+   images and loaded natively: SER files and any film) and export
+ * new demosaicing tool with 4 algoritms (AHD, VNG, Bilinear, Super Pixel)
+ * better image sequence handling, with non-contiguous sequences, but still
+   requiring file names to be postfixed by integers (like: image001.fit and not
+   image001L.fit)
+ * new graphical user interface based on GTK+ version 3.4 and above, and in
+   general, update of dependencies to latest versions
+ * new display modes added to the standard linear scaling with lo/hi bounds: log,
+   asinh, sqr, sqrt, histeq, negative, false colors
+ * manual translation as new registration method with two preview renderings of
+   the current image with reference frame in transparency
+ * automatic translation as new registration method for deep-sky images, based on
+   the FWHM/PSF analysis of one star instead of DFT, more suited for planetary and
+   nebula images
+ * new commands available for the command line, see the list of available commands
+ * a star finding algorithm with PSF information
+ * new processing functions: unsharp mask, background extraction, green dominance
+   removal, new method for background equalization, two-way Fourier transform used
+   to remove annoying patterns in images, kappa-sigma stacking
+ * new image compositing tool, allowing colour images to be created from multiple
+   one-channel images by affecting user-defined colours
+ * numerous bugs fixed and internal code refactoring for a better extensibility
+
+v0.8
+ * last release of the old Siril, in 2006.
+
+v0.6
+ * a intermediate release before a first beta release
+	a lot of changes both in the GUI and the inner structure.
+	48 bits RGB fits processing, bmp conversion
+
+a sample session is given here :
+	given a directory with a 24 bit bmp series 1.bmp... n.bmp,
+	a sample session producing a registered 48bit fit stack
+	of those is the following :
+		change dir (go to the desired directory)
+		file conversion: (defaults are ok for this example)
+			->go 
+		sequence processing (siril detetcs and builds the image sequence)
+		select a region in one of the R,G,B layers 
+			(registration will allways be computed on G layer)
+		click register
+		click stack
+	you are done.
+
+v0.5 
+ * first light of the sequence graphic interface
+
+v0.3 
+ * 20050820; a few corrections.
+
+v0.2
+ * siril now has wavelet and wrecons
